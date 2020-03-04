@@ -163,3 +163,15 @@ class NilAssertionError < Exception
     super(message)
   end
 end
+
+# Raised when trying to modify an object that is read-only.
+#
+# ```
+# slice = Slice.new(10, read_only: true) { |i| i }
+# slice[0] = 1
+# ```
+class ReadOnlyError < Exception
+  def initialize(message)
+    super(message)
+  end
+end

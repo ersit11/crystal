@@ -1,3 +1,6 @@
+require "./client"
+require "./headers"
+
 class HTTP::WebSocket
   getter? closed = false
 
@@ -41,7 +44,7 @@ class HTTP::WebSocket
   # HTTP::WebSocket.new("websocket.example.com", "/chat")            # Creates a new WebSocket to `websocket.example.com`
   # HTTP::WebSocket.new("websocket.example.com", "/chat", tls: true) # Creates a new WebSocket with TLS to `ẁebsocket.example.com`
   # ```
-  def self.new(host : String, path : String, port = nil, tls = false, headers = HTTP::Headers.new)
+  def self.new(host : String, path : String, port = nil, tls : HTTP::Client::TLSContext = nil, headers = HTTP::Headers.new)
     new(Protocol.new(host, path, port, tls, headers))
   end
 
@@ -145,6 +148,8 @@ class HTTP::WebSocket
           @current_message.clear
           break
         end
+      when Protocol::Opcode::CONTINUATION
+        # TODO: (asterite) I think this is good, but this case wasn't originally handled
       end
     end
   end

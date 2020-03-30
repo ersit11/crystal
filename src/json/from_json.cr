@@ -279,8 +279,6 @@ def Union.new(pull : JSON::PullParser)
       value = pull.read?({{type}})
       return value unless value.nil?
     {% end %}
-    else
-      # no priority type
     end
   {% end %}
 

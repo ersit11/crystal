@@ -376,8 +376,6 @@ abstract class Crystal::SemanticVisitor < Crystal::Visitor
               expanded = expanded_type.value
             when Type
               expanded = TypeNode.new(expanded_type)
-            else
-              # go on
             end
           end
           expanded
@@ -499,8 +497,8 @@ abstract class Crystal::SemanticVisitor < Crystal::Visitor
 
   def class_var_owner(node)
     scope = (@scope || current_type).class_var_owner
-
-    if scope.is_a?(Program)
+    case scope
+    when Program
       node.raise "can't use class variables at the top level"
     end
 

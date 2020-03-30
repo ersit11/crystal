@@ -68,13 +68,11 @@ module Unicode
   private def self.check_upcase_turkic(char, options)
     if options.turkic?
       case char
-      when 'ı' then 'I'
-      when 'i' then 'İ'
-      else          nil
+      when 'ı'; return 'I'
+      when 'i'; return 'İ'
       end
-    else
-      nil
     end
+    nil
   end
 
   private def self.check_upcase_ranges(char)
@@ -145,13 +143,11 @@ module Unicode
   private def self.check_downcase_turkic(char, options)
     if options.turkic?
       case char
-      when 'I' then 'ı'
-      when 'İ' then 'i'
-      else          nil
+      when 'I'; return 'ı'
+      when 'İ'; return 'i'
       end
-    else
-      nil
     end
+    nil
   end
 
   private def self.check_downcase_fold(char, options)

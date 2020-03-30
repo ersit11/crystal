@@ -371,8 +371,6 @@ class JSON::PullParser
         case token.kind
         when .comma?, .end_array?, .end_object?, .eof?
           unexpected_token
-        else
-          # okay
         end
 
         if obj.try(&.object?) && token.kind.string?
@@ -387,8 +385,6 @@ class JSON::PullParser
         case next_token.kind
         when .comma?, .colon?, .end_array?, .end_object?, .eof?
           unexpected_token
-        else
-          # okay
         end
       when .eof?
         @kind = :EOF
@@ -452,8 +448,6 @@ class JSON::PullParser
     case next_token.kind
     when .comma?, .end_object?, .colon?, .eof?
       unexpected_token
-    else
-      # okay
     end
   end
 

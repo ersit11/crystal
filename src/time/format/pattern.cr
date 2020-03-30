@@ -147,8 +147,6 @@ struct Time::Format
               microseconds
             when '9'
               nanoseconds
-            else
-              raise "Bug: someone forgot to match some numbers"
             end
           else
             char '%'

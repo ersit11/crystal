@@ -151,8 +151,6 @@ class Crystal::TypeDeclarationVisitor < Crystal::SemanticVisitor
       declare_instance_var(node, var)
     when ClassVar
       declare_class_var(node, var, false)
-    else
-      raise "Unexpected TypeDeclaration var type: #{var.class}"
     end
 
     false
@@ -220,8 +218,6 @@ class Crystal::TypeDeclarationVisitor < Crystal::SemanticVisitor
     when NonGenericModuleType
       declare_instance_var(owner, node, var)
       return
-    else
-      # Error, continue
     end
 
     node.raise "can only declare instance variables of a non-generic class, not a #{owner.type_desc} (#{owner})"
@@ -257,8 +253,6 @@ class Crystal::TypeDeclarationVisitor < Crystal::SemanticVisitor
       declare_instance_var(node, var)
     when ClassVar
       declare_class_var(node, var, true)
-    else
-      # nothing (it's a var)
     end
     false
   end

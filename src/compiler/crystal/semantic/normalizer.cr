@@ -75,8 +75,6 @@ module Crystal
           end
           node.has_parentheses = true
         end
-      else
-        # not a special call
       end
 
       # Convert 'a <= b <= c' to 'a <= b && b <= c'

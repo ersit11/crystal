@@ -490,8 +490,6 @@ module Crystal
         when :DELIMITER_END
           heredoc_end = @line
           break
-        else
-          raise "Bug: unexpected token: #{@token.type}"
         end
       end
 
@@ -769,8 +767,6 @@ module Crystal
             write @token.raw
             next_token
             break
-          else
-            raise "Bug: unexpected token #{@token.type}"
           end
           count += 1
         end
@@ -3032,8 +3028,6 @@ module Crystal
         else
           clear_object(node.obj)
         end
-      else
-        # nothing to do
       end
     end
 
@@ -3296,8 +3290,6 @@ module Crystal
         write_keyword :private, " "
       when .protected?
         write_keyword :protected, " "
-      when .public?
-        # no keyword needed
       end
       accept node.exp
 

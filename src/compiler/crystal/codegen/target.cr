@@ -27,8 +27,6 @@ class Crystal::Codegen::Target
       @architecture = "x86_64"
     when .starts_with?("arm")
       @architecture = "arm"
-    else
-      # no need to tweak the architecture
     end
   end
 

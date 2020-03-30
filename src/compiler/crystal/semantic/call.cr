@@ -43,8 +43,6 @@ class Crystal::Call
     when LibType
       # `LibFoo.call` has a separate logic
       return recalculate_lib_call obj_type
-    else
-      # Nothing
     end
 
     # Check if its call is inside LibFoo
@@ -516,9 +514,14 @@ class Crystal::Call
   end
 
   def named_tuple_indexer_helper(args, arg_types, owner, instance_type, nilable)
-    case arg = args.first
+    arg = args.first
+
+    case arg
     when SymbolLiteral, StringLiteral
       name = arg.value
+    end
+
+    if name
       index = instance_type.name_index(name)
       if index || nilable
         indexer_def = yield instance_type, (index || -1)
@@ -527,9 +530,8 @@ class Crystal::Call
       else
         raise "missing key '#{name}' for named tuple #{owner}"
       end
-    else
-      nil
     end
+    nil
   end
 
   def replace_splats
@@ -697,8 +699,6 @@ class Crystal::Call
         return result
       when Type::DefInMacroLookup
         return nil
-      else
-        # Check next target
       end
     end
   end

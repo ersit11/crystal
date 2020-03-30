@@ -116,8 +116,6 @@ class IO
             if old_in_buffer_left == @in_buffer_left
               @iconv.handle_invalid(pointerof(@in_buffer), pointerof(@in_buffer_left))
             end
-          else
-            # Not an error we can handle
           end
 
           # Continue decoding after an error

@@ -162,16 +162,12 @@ class CSV::Builder
           case byte.unsafe_chr
           when @separator, @quote_char, '\n'
             return true
-          else
-            # keep scanning
           end
         end
-        false
       when .all?
-        true
-      else
-        false
+        return true
       end
+      return false
     end
   end
 end

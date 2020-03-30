@@ -37,8 +37,6 @@ module Crystal
                 false
               when NonGenericClassType, GenericClassType
                 true
-              else
-                false
               end
 
       if check

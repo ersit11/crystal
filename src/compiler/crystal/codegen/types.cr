@@ -196,8 +196,6 @@ module Crystal
           when IntegerType, EnumType
             interpreter = MathInterpreter.new(namespace, visitor)
             @compile_time_value = interpreter.interpret(value) rescue nil
-          else
-            # go on
           end
         end
       end

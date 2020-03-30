@@ -58,8 +58,6 @@ module HTTP
             case encoding
             when "gzip", "deflate"
               raise "Can't decompress because `-D without_zlib` was passed at compile time"
-            else
-              # not a format we support
             end
           {% else %}
             case encoding
@@ -67,8 +65,6 @@ module HTTP
               body = Gzip::Reader.new(body, sync_close: true)
             when "deflate"
               body = Flate::Reader.new(body, sync_close: true)
-            else
-              # not a format we support
             end
           {% end %}
         end
@@ -317,16 +313,16 @@ module HTTP
   def self.keep_alive?(message)
     case message.headers["Connection"]?.try &.downcase
     when "keep-alive"
-      true
+      return true
     when "close", "upgrade"
+      return false
+    end
+
+    case message.version
+    when "HTTP/1.0"
       false
     else
-      case message.version
-      when "HTTP/1.0"
-        false
-      else
-        true
-      end
+      true
     end
   end
 
@@ -415,8 +411,6 @@ module HTTP
         io << '\\'
       when 0x00..0x1F, 0x7F
         raise ArgumentError.new("String contained invalid character #{byte.chr.inspect}")
-      else
-        # output byte as is
       end
       io.write_byte byte
     end

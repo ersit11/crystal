@@ -56,8 +56,6 @@ class YAML::PullParser
       ptr = @event.data.sequence_start.tag
     when .scalar?
       ptr = @event.data.scalar.tag
-    else
-      # no tag
     end
     ptr ? String.new(ptr) : nil
   end
@@ -240,20 +238,6 @@ class YAML::PullParser
         skip
         skip
       end
-      read_next
-    when .document_start?
-      read_next
-      until kind.document_end?
-        skip
-      end
-      read_next
-    when .stream_start?
-      read_next
-      until kind.stream_end?
-        skip
-      end
-      read_next
-    else
       read_next
     end
   end

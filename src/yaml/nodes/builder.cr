@@ -125,8 +125,6 @@ class YAML::Nodes::Builder
       current << node
     when Mapping
       current << node
-    else
-      raise "Can't push into #{current.class}"
     end
   end
 

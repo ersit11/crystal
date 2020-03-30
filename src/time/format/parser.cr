@@ -297,8 +297,6 @@ struct Time::Format
         next_char
       when '+'
         next_char
-      else
-        # no sign prefix
       end
 
       @unix_seconds = consume_number_i64(19) * (negative ? -1 : 1)

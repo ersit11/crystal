@@ -18,7 +18,7 @@ module ECR
     String.build do |str|
       while true
         case token.type
-        when .string?
+        when :STRING
           string = token.value
           token = lexer.next_token
 
@@ -28,7 +28,7 @@ module ECR
           str << " << "
           string.inspect(str)
           str << '\n'
-        when .output?
+        when :OUTPUT
           string = token.value
           line_number = token.line_number
           column_number = token.column_number
@@ -43,7 +43,7 @@ module ECR
           str << ")#<loc:pop>.to_s "
           str << buffer_name
           str << '\n'
-        when .control?
+        when :CONTROL
           string = token.value
           line_number = token.line_number
           column_number = token.column_number
@@ -58,7 +58,7 @@ module ECR
           str << string
           str << "#<loc:pop>"
           str << '\n'
-        when .eof?
+        when :EOF
           break
         end
       end
@@ -69,7 +69,7 @@ module ECR
     # To suppress leading indentation we find the last index of a newline and
     # then check if all chars after that are whitespace.
     # We use a Char::Reader for this for maximum efficiency.
-    if (token.type.output? || token.type.control?) && token.suppress_leading?
+    if (token.type == :OUTPUT || token.type == :CONTROL) && token.suppress_leading?
       char_index = string.rindex('\n')
       char_index = char_index ? char_index + 1 : 0
       byte_index = string.char_index_to_byte_index(char_index).not_nil!
@@ -86,7 +86,7 @@ module ECR
   end
 
   private def suppress_trailing_whitespace(token, suppress_trailing)
-    if suppress_trailing && token.type.string?
+    if suppress_trailing && token.type == :STRING
       newline_index = token.value.index('\n')
       token.value = token.value[newline_index + 1..-1] if newline_index
     end

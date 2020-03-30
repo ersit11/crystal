@@ -639,11 +639,7 @@ module Crystal
           if cond.name == "class"
             return IsA.new(right_side, Metaclass.new(obj.clone).at(obj))
           end
-        else
-          # no special treatment
         end
-      else
-        # no special treatment
       end
 
       Call.new(cond, "===", right_side)

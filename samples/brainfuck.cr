@@ -45,7 +45,6 @@ class Program
       when '.'; print tape.get.chr
       when '['; pc = @bracket_map[pc] if tape.get == 0
       when ']'; pc = @bracket_map[pc] if tape.get != 0
-      else # skip
       end
       pc += 1
     end

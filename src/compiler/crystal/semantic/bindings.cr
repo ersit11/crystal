@@ -23,15 +23,13 @@ module Crystal
       if with_literals
         case self
         when NumberLiteral
-          NumberLiteralType.new(type.program, self)
+          return NumberLiteralType.new(type.program, self)
         when SymbolLiteral
-          SymbolLiteralType.new(type.program, self)
-        else
-          type
+          return SymbolLiteralType.new(type.program, self)
         end
-      else
-        type
       end
+
+      type
     end
 
     def set_type(type : Type)

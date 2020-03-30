@@ -1495,8 +1495,6 @@ struct Time
         zone = location.lookup(range[0] - 1)
       when .>=(range[1])
         zone = location.lookup(range[1])
-      else
-        # in range
       end
     end
 

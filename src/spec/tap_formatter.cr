@@ -10,8 +10,6 @@ class Spec::TAPFormatter < Spec::Formatter
       @io << "not ok"
     when :pending
       @io << "ok"
-    else
-      # shouldn't happen (TODO: maybe turn this into an enum?)
     end
 
     @counter += 1

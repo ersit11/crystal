@@ -849,8 +849,6 @@ module Crystal
           if next_char == 'n' && next_char == 'o' && next_char == 't' && next_char == 'a' && next_char == 't' && next_char == 'i' && next_char == 'o' && next_char == 'n'
             return check_ident_or_keyword(:annotation, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'b'
@@ -863,8 +861,6 @@ module Crystal
           if next_char == 'e' && next_char == 'a' && next_char == 'k'
             return check_ident_or_keyword(:break, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'c'
@@ -877,8 +873,6 @@ module Crystal
           if next_char == 'a' && next_char == 's' && next_char == 's'
             return check_ident_or_keyword(:class, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'd'
@@ -888,8 +882,6 @@ module Crystal
             return check_ident_or_keyword(:def, start)
           end
         when 'o' then return check_ident_or_keyword(:do, start)
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'e'
@@ -903,11 +895,7 @@ module Crystal
               if next_char == 'f'
                 return check_ident_or_keyword(:elsif, start)
               end
-            else
-              # scan_ident
             end
-          else
-            # scan_ident
           end
         when 'n'
           case next_char
@@ -921,15 +909,11 @@ module Crystal
             if next_char == 'm'
               return check_ident_or_keyword(:enum, start)
             end
-          else
-            # scan_ident
           end
         when 'x'
           if next_char == 't' && next_char == 'e' && next_char == 'n' && next_char == 'd'
             return check_ident_or_keyword(:extend, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'f'
@@ -946,8 +930,6 @@ module Crystal
           if next_char == 'n'
             return check_ident_or_keyword(:fun, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'i'
@@ -965,8 +947,6 @@ module Crystal
               if next_char == 't' && next_char == 'a' && next_char == 'n' && next_char == 'c' && next_char == 'e' && next_char == '_' && next_char == 's' && next_char == 'i' && next_char == 'z' && next_char == 'e' && next_char == 'o' && next_char == 'f'
                 return check_ident_or_keyword(:instance_sizeof, start)
               end
-            else
-              # scan_ident
             end
           else
             next_char
@@ -978,8 +958,6 @@ module Crystal
           if next_char == '_' && next_char == 'a' && next_char == '?'
             return check_ident_or_keyword(:is_a?, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'l'
@@ -988,8 +966,6 @@ module Crystal
           if next_char == 'b'
             return check_ident_or_keyword(:lib, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'm'
@@ -1004,11 +980,7 @@ module Crystal
             if next_char == 'u' && next_char == 'l' && next_char == 'e'
               return check_ident_or_keyword(:module, start)
             end
-          else
-            # scan_ident
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'n'
@@ -1026,11 +998,7 @@ module Crystal
             else
               return check_ident_or_keyword(:nil, start)
             end
-          else
-            # scan_ident
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'o'
@@ -1048,8 +1016,6 @@ module Crystal
           if next_char == 't'
             return check_ident_or_keyword(:out, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'p'
@@ -1068,11 +1034,7 @@ module Crystal
             if next_char == 't' && next_char == 'e' && next_char == 'c' && next_char == 't' && next_char == 'e' && next_char == 'd'
               return check_ident_or_keyword(:protected, start)
             end
-          else
-            # scan_ident
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'r'
@@ -1089,8 +1051,6 @@ module Crystal
               if next_char == 'o' && next_char == 'n' && next_char == 'd' && next_char == 's' && next_char == '_' && next_char == 't' && next_char == 'o' && next_char == '?'
                 return check_ident_or_keyword(:responds_to?, start)
               end
-            else
-              # scan_ident
             end
           when 't'
             if next_char == 'u' && next_char == 'r' && next_char == 'n'
@@ -1100,11 +1060,7 @@ module Crystal
             if next_char == 'u' && next_char == 'i' && next_char == 'r' && next_char == 'e'
               return check_ident_or_keyword(:require, start)
             end
-          else
-            # scan_ident
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 's'
@@ -1118,8 +1074,6 @@ module Crystal
               end
             when 'f'
               return check_ident_or_keyword(:self, start)
-            else
-              # scan_ident
             end
           end
         when 'i'
@@ -1134,8 +1088,6 @@ module Crystal
           if next_char == 'p' && next_char == 'e' && next_char == 'r'
             return check_ident_or_keyword(:super, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 't'
@@ -1159,8 +1111,6 @@ module Crystal
               return check_ident_or_keyword(:type, start)
             end
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'u'
@@ -1176,8 +1126,6 @@ module Crystal
               if next_char == 'i' && next_char == 't' && next_char == 'i' && next_char == 'a' && next_char == 'l' && next_char == 'i' && next_char == 'z' && next_char == 'e' && next_char == 'd'
                 return check_ident_or_keyword(:uninitialized, start)
               end
-            else
-              # scan_ident
             end
           when 'l'
             if next_char == 'e' && next_char == 's' && next_char == 's'
@@ -1187,8 +1135,6 @@ module Crystal
             if next_char == 'i' && next_char == 'l'
               return check_ident_or_keyword(:until, start)
             end
-          else
-            # scan_ident
           end
         end
         scan_ident(start)
@@ -1209,15 +1155,11 @@ module Crystal
             if next_char == 'l' && next_char == 'e'
               return check_ident_or_keyword(:while, start)
             end
-          else
-            # scan_ident
           end
         when 'i'
           if next_char == 't' && next_char == 'h'
             return check_ident_or_keyword(:with, start)
           end
-        else
-          # scan_ident
         end
         scan_ident(start)
       when 'y'
@@ -1269,8 +1211,6 @@ module Crystal
                 return @token
               end
             end
-          else
-            # scan_ident
           end
         else
           unless ident_part?(current_char)
@@ -1616,8 +1556,6 @@ module Crystal
         end
 
         check_value_fits_in_uint64 string_value, num_size, start
-      else
-        # TODO: handle i128 and u128
       end
     end
 
@@ -2251,8 +2189,6 @@ module Crystal
               next_char
               nest += 1
             end
-          else
-            # no nesting
           end
         end
 
@@ -2313,9 +2249,8 @@ module Crystal
             break
           when '\0'
             raise "unterminated macro"
-          else
-            char = next_char
           end
+          char = next_char
         end
         @token.type = :MACRO_LITERAL
         @token.value = string_range(start)
@@ -2370,8 +2305,6 @@ module Crystal
               nest += 1
               whitespace = true
             end
-          else
-            # not a keyword
           end
         else
           whitespace = false
@@ -2470,8 +2403,6 @@ module Crystal
                 if delimiter_state.open_count == 0
                   delimiter_state = nil
                 end
-              else
-                # Nothing to do
               end
             end
 
@@ -2546,8 +2477,6 @@ module Crystal
           end
         when 'n'
           next_char == 'n' && next_char == 'o' && next_char == 't' && next_char == 'a' && next_char == 't' && next_char == 'i' && next_char == 'o' && next_char == 'n' && peek_not_ident_part_or_end_next_char && :annotation
-        else
-          false
         end
       when 'b'
         next_char == 'e' && next_char == 'g' && next_char == 'i' && next_char == 'n' && peek_not_ident_part_or_end_next_char && :begin

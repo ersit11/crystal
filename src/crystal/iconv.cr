@@ -66,8 +66,6 @@ struct Crystal::Iconv
         raise ArgumentError.new "Incomplete multibyte sequence"
       when Errno::EILSEQ
         raise ArgumentError.new "Invalid multibyte sequence"
-      else
-        # All is good
       end
     end
   end

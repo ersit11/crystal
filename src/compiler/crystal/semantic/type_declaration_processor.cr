@@ -408,8 +408,6 @@ struct Crystal::TypeDeclarationProcessor
         process_owner_guessed_instance_var_declaration(including_type, name, type_info)
         remove_error including_type, name
       end
-    else
-      # TODO: can this be reached?
     end
   end
 
@@ -645,8 +643,6 @@ struct Crystal::TypeDeclarationProcessor
           error.node.raise "can't use #{error.type} as the type of class variable '#{name}' of #{type}, use a more specific type"
         when .starts_with?("@")
           error.node.raise "can't use #{error.type} as the type of instance variable '#{name}' of #{type}, use a more specific type"
-        else
-          # TODO: can this be reached?
         end
       end
     end
